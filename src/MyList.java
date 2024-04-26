@@ -15,8 +15,12 @@ public interface MyList<T> extends Iterable<T>{
     void sort();
     int indexOf(Object object);
     int lastIndexOf(Object object);
+
+    int LastIndexOf(Object object);
+
     boolean exists(Object object);
     public Object[] toArray();
     void clear();
     int getSize();
+
 }

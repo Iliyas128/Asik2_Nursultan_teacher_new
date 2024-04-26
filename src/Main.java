@@ -19,6 +19,28 @@ public static void main(String[] args) {
         myArrayList.addElement(4);
         myArrayList.removeFirst();
         myArrayList.printArr();
+        System.out.println("" +
+                "");
+        myArrayList.addLast(89);
+        myArrayList.printArr();
+        System.out.println("" +
+                "");
+        myArrayList.addFirst(45);
+        myArrayList.printArr();
+        System.out.println("" +
+                "");
+        myArrayList.remove(2);
+        myArrayList.printArr();
+        System.out.println("" +
+                "");
+        myArrayList.addElement(2,69);
+        myArrayList.printArr();
+        System.out.println("" +
+                "ToArray");
+        System.out.println(myArrayList.indexOf(4));
+        System.out.println(myArrayList.exists(7));
+
+
 
     }
 }
