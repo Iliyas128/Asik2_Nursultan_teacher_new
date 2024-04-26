@@ -1,59 +1,101 @@
-public class MyArrayList<T> {
-        private T[] arr = (T[]) new Object[5];
-        private int size;
+import java.util.Iterator;
 
-        public MyArrayList(){
-            size = 0;
-        }
-        public void addElement(T element){
-            if(size>=arr.length){
-                increaseBuffer();
-            }
-            arr[size++] = element;
-        }
+public class MyArrayList<T> implements MyList<T>{
 
-        public void addElement(T element, int index){
-            checkIndex(index);
-            if(size>= arr.length){
-                increaseBuffer();
-            }
-            arr[index] = element;
-        }
+    Object[] array = new
 
-        private void increaseBuffer() {
-            T[] newArr = (T[]) new Object[arr.length*2];
-            for (int i = 0; i < arr.length; i++) {
-                newArr[i] = arr[i];
-            }
-            arr = newArr;
-        }
+    @Override
+    public void add(T item) {
 
-        public T getElement(int index){
-            checkIndex(index);
-            return arr[index];
-        }
+    }
 
-        public int getSize(){
-            return size;
-        }
+    @Override
+    public void set(int index, T item) {
 
-        public void removeElement(int index){
-            checkIndex(index);
-            for (int i = index+1; i <size ; i++) {
-                arr[i-1] = arr[i];
-            }
-            size--;
-        }
+    }
 
-        private void checkIndex(int index){
-            if(index < 0 || index >= size){
-                throw new ArrayIndexOutOfBoundsException("index not correct");
-            }
-        }
+    @Override
+    public void add(int index, T item) {
 
-        public void clear(){
-            arr = (T[]) new Object[5];
-            size = 0;
-        }
+    }
 
+    @Override
+    public void addFirst(T item) {
+
+    }
+
+    @Override
+    public void addLast(T item) {
+
+    }
+
+    @Override
+    public T get(int index) {
+        return array;
+    }
+
+    @Override
+    public T getFirst() {
+        return null;
+    }
+
+    @Override
+    public T getLast() {
+        return null;
+    }
+
+    @Override
+    public void remove(int index) {
+
+    }
+
+    @Override
+    public void removeFirst() {
+
+    }
+
+    @Override
+    public void removeLast() {
+
+    }
+
+    @Override
+    public void sort() {
+
+    }
+
+    @Override
+    public int indexOf(Object object) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object object) {
+        return 0;
+    }
+
+    @Override
+    public boolean exists(Object object) {
+        return false;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
 }
