@@ -6,7 +6,7 @@ public class MyArrayList<T> implements MyList<T>{
     private int size =0;
     private int capacity = 4;
     public MyArrayList(){
-
+    array = new Object[capacity];
     }
 
     private void checkIndex(int index) {
@@ -14,7 +14,7 @@ public class MyArrayList<T> implements MyList<T>{
             throw new IndexOutOfBoundsException("index not correct");
     }
     @Override
-    public void add( T item) {
+    public void addElement( T item) {
     if (size==capacity){
         IncreaseB();
     }
@@ -22,11 +22,11 @@ public class MyArrayList<T> implements MyList<T>{
     }
     private void IncreaseB(){
         capacity = 2 * capacity;
-        Object array2 = new Object[capacity];
+        Object[] array2 = new Object[capacity];
         for (int i = 0; i < size ; i++) {
             array2[i] = array[i];
         }
-        array = (Object[]) array2;
+        array = array2;
     }
     @Override
     public T get(int index) {
@@ -55,7 +55,7 @@ public class MyArrayList<T> implements MyList<T>{
     }
 
     @Override
-    public void add(int index, T item) {
+    public void addElement(int index, T item) {
 
     }
 
