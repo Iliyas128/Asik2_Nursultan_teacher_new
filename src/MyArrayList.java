@@ -30,12 +30,14 @@ public class MyArrayList<T> implements MyList<T>{
     }
     @Override
     public T get(int index) {
+        checkIndex(index);
         return (T) array[index];
     }
 
     @Override
     public void set(int index, T item) {
-    Object array2[] = new Object[size];
+        checkIndex(index);
+        Object array2[] = new Object[size];
         int i;
         for (i = 0; i < size ; i++){
             if(i == index){
@@ -44,7 +46,12 @@ public class MyArrayList<T> implements MyList<T>{
             }
             array2[i] = array[i];
         }
-        array = (Object[]) array2;
+        array = array2;
+    }
+    public void printArr(){
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
     }
 
     @Override
@@ -75,22 +82,42 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void remove(int index) {
-
+        checkIndex(index);
+        for (int i = index + 1; i < size; i++) {
+            array[i-1] = array[i];
+        }
+        size--;
     }
 
     @Override
     public void removeFirst() {
-
+        for (int i =1; i< size;i++){
+            array[i-1] = array[i];
+        }
+        size--;
     }
 
     @Override
     public void removeLast() {
-
+        Object array2[] = new Object[size-1];
+        for (int i =0;i<size-2;i++){
+            array2[i] = array[i];
+        }
+        array = array2;
+        size--;
     }
 
     @Override
     public void sort() {
-
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (((Comparable<T>) array[i]).compareTo((T) array[j]) > 0) {
+                    T temp = (T) array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
     }
 
     @Override
