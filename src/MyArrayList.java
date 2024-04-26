@@ -2,16 +2,49 @@ import java.util.Iterator;
 
 public class MyArrayList<T> implements MyList<T>{
 
-    Object[] array = new
+    private Object[] array;
+    private int size =0;
+    private int capacity = 4;
+    public MyArrayList(){
 
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("index not correct");
+    }
     @Override
-    public void add(T item) {
-
+    public void add( T item) {
+    if (size==capacity){
+        IncreaseB();
+    }
+    array[size++] = item;
+    }
+    private void IncreaseB(){
+        capacity = 2 * capacity;
+        Object array2 = new Object[capacity];
+        for (int i = 0; i < size ; i++) {
+            array2[i] = array[i];
+        }
+        array = (Object[]) array2;
+    }
+    @Override
+    public T get(int index) {
+        return (T) array[index];
     }
 
     @Override
     public void set(int index, T item) {
-
+    Object array2[] = new Object[size];
+        int i;
+        for (i = 0; i < size ; i++){
+            if(i == index){
+                array2[index] = (Object) item;
+                continue;
+            }
+            array2[i] = array[i];
+        }
+        array = (Object[]) array2;
     }
 
     @Override
@@ -29,19 +62,15 @@ public class MyArrayList<T> implements MyList<T>{
 
     }
 
-    @Override
-    public T get(int index) {
-        return array;
-    }
 
     @Override
     public T getFirst() {
-        return null;
+        return (T) array[0];
     }
 
     @Override
     public T getLast() {
-        return null;
+        return (T) array[size-1];
     }
 
     @Override
@@ -86,12 +115,13 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void clear() {
-
+        array = (T[]) new Object[5];
+        size = 0;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
