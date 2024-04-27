@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyArrayList<T> implements MyList<T>{
 
@@ -10,7 +11,7 @@ public class MyArrayList<T> implements MyList<T>{
     }
 
     private void checkIndex(int index) {
-        if (index < 0 || index > size)
+        if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException("index not correct");
     }
     @Override
@@ -57,16 +58,35 @@ public class MyArrayList<T> implements MyList<T>{
     @Override
     public void addElement(int index, T item) {
 
+        checkIndex(index);
+        Object[] array2 = new Object[size+1];
+        for (int i = size; i > index; i--) {
+            array[i] = array[i-1];
+        }
+        array[index] = item;
+        size++;
     }
 
     @Override
     public void addFirst(T item) {
-
+        Object[] array2 = new Object[size+1];
+        array2[0] = item;
+        for(int i = 1;i<size+1;i++){
+        array2[i] = array[i-1];
+    }
+        array = array2;
+        size++;
     }
 
     @Override
     public void addLast(T item) {
-
+        Object[] array2 = new Object[size+1];
+        array2[size] = item;
+        for(int i = 0;i<size;i++){
+            array2[i] = array[i];
+        }
+        array = array2;
+        size++;
     }
 
 
@@ -120,24 +140,37 @@ public class MyArrayList<T> implements MyList<T>{
         }
     }
 
-    @Override
     public int indexOf(Object object) {
+        for(int i = 0; i < size; i++){
+            if (get(i).equals(object)){
+                return i;
+            }
+        }
         return 0;
     }
 
     @Override
     public int lastIndexOf(Object object) {
-        return 0;
+        return size-1;
     }
 
     @Override
     public boolean exists(Object object) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(object)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] array2 = new Object[size];
+        for (int i = 0; i < size; i++) {
+            array2[i] = array[i];
+        }
+        return array2;
     }
 
     @Override
@@ -150,6 +183,7 @@ public class MyArrayList<T> implements MyList<T>{
     public int getSize() {
         return size;
     }
+
 
     @Override
     public Iterator<T> iterator() {

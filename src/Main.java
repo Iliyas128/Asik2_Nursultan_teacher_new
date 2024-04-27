@@ -3,10 +3,6 @@ public class Main{
 public static void main(String[] args) {
         MyArrayList myArrayList =  new MyArrayList();
 
-        ArrayList arrayList = new ArrayList();
-
-        //arrayList.add(5);
-
 
         myArrayList.addElement(11.5);
         myArrayList.addElement(10);
@@ -36,11 +32,21 @@ public static void main(String[] args) {
         myArrayList.addElement(2,69);
         myArrayList.printArr();
         System.out.println("" +
-                "ToArray");
+                "");
         System.out.println(myArrayList.indexOf(4));
         System.out.println(myArrayList.exists(7));
 
 
+        MyLinkedList linkedList = new MyLinkedList();
+        linkedList.addElement(1);
+        linkedList.addElement(2);
+        linkedList.addElement(3);
+        linkedList.addElement(4);
+        linkedList.addElement(5);
+        linkedList.addElement(6);
+        linkedList.addElement(7);
+        linkedList.addElement(8);
+        linkedList.printArr();
 
     }
 }
